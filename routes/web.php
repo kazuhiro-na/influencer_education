@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('/admin/login', 'admin/login');
+Route::post('/admin/login', [LoginController::class, 'login']);
+Route::post('admin/logout', [LoginController::class,'logout']);
+Route::view('/admin/register', 'admin/register');
+Route::post('/admin/register', [RegisterController::class, 'register']);
+Route::view('/admin/top', 'admin/top')->middleware('auth:admin');
+Route::view('/admin/banner', 'admin/banner');
