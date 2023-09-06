@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('curriculum_progress', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('curriculums_id');
             $table->integer('users_id');
             $table->tinyInteger('clear_flg');
