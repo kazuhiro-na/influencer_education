@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->dateTime('posted_date');
             $table->longText('article_contents');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 
