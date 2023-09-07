@@ -28,4 +28,9 @@ Route::post('admin/logout', [LoginController::class,'logout']);
 Route::view('/admin/register', 'admin/register');
 Route::post('/admin/register', [RegisterController::class, 'register']);
 Route::view('/admin/top', 'admin/top')->middleware('auth:admin');
-Route::view('/admin/banner', 'admin/banner');
+Route::view('/admin/banner', 'admin/banner')->name('admin.banner');
+
+//お知らせ一覧ページへ(仮)
+Route::view('/admin/article', 'admin/login')->name('admin.article');
+//授業一覧ページへ(仮)
+Route::view('/admin/curriculum', 'admin/login')->name('admin.curriculum');

@@ -25,17 +25,17 @@
                     <!-- Left Side Of Navbar -->  
                         <div class="navbar-nav me-auto">
                             <button type="submit" class="btn btn-secondary px-3 py-0 me-2">
-                                <a href="{{ url('') }}" class="text-decoration-none text-white lead">
+                                <a href="{{ route('admin.curriculum') }}" class="text-decoration-none text-white lead">
                                     <h5 class="pt-2">授業管理<h5>
                                 </a>
                             </button>
                             <button type="submit" class="btn btn-secondary px-3 py-0 me-2">
-                                <a href="{{ url('') }}" class="text-decoration-none text-white lead">
+                                <a href="{{ route('admin.article') }}" class="text-decoration-none text-white lead">
                                     <h5 class="pt-2">お知らせ管理<h5>
                                 </a>
                             </button>
                             <button type="submit" class="btn btn-secondary px-3 py-0 me-2">
-                                <a href="{{ url('admin/banner') }}" class="text-decoration-none text-white lead">
+                                <a href="{{ route('admin.banner') }}" class="text-decoration-none text-white lead">
                                     <h5 class="pt-2">バナー管理<h5>
                                 </a>
                             </button>
