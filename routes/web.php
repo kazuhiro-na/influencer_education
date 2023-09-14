@@ -31,3 +31,5 @@ Route::view('/admin/password/reset', 'admin/passwords/email');
 Route::post('/admin/password/email', [App\Http\Controllers\admin\ForgotPasswordController::class, 'sendResetLinkEmail']);
 Route::view('/admin/password/reset/{token}', [App\Http\Controllers\admin\ResetPasswordController::class,'showResetForm']);
 Route::post('/admin/password/reset', [App\Http\Controllers\admin\ResetPasswordController::class, 'reset']);
+
+Route::get('/user/progress', 'UserController@progress');
