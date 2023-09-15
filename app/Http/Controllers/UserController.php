@@ -4,24 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Classroom;
+use App\Models\User;
 
 class UserController extends Controller
 {
     protected $table = 'classes';
 
-    public function progress()
+    public function progress($userId)
     {
         if (Auth::check()){
-            $user = Auth::user();
+            $user = User::find($userId); 
+            if (!$user) {
+                return redirect('/home')->with('error', 'ユーザーが見つかりません。');
+            }            
+            
             $userName = $user->name;
             $classroomName = $user->classroom->name;
-            $classes = [
-                '小学1年生' => 'カリキュラム1',
-                '小学2年生' => 'カリキュラム2',
-            ];
+            $classes = Classroom::all();
+            //$curriculum = $classes->curriculums;
             return view('user.progress', compact('userName', 'classroomName', 'classes'));
-        }else {
-            return redirect('/login');
-        }
+            }
     }
 }

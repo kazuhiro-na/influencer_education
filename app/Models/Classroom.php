@@ -15,4 +15,9 @@ class Classroom extends Model
     {
         return $this->hasMany(User::class, 'class_id');
     }
+
+    public function curriculums()
+    {
+        return $this->hasMany(Curriculum::class, 'classes_id');
+    }
 }
