@@ -35,19 +35,17 @@ class Curriculum extends Model
     public function timetable($curriculumData){
         $id = $curriculumData;
         $timetable = [];
-
+        $alwaysOpen = ['常時公開'];
         
         for($i=0;$i<count($id);$i++ ){
           $flag = $curriculumData[$i]->alway_delivery_flg;
   
           if($flag==1){
-            array_push($timetable,'常時公開');
+            array_push($timetable,$alwaysOpen);
           }elseif($flag==0){
             $delivery_time = DB::table('delivery_times')
             ->where('curriculums_id','=',$curriculumData[$i]->id)
             ->get();
-            
-            //return 'チェック'.$delivery_time;
 
             $fromArray = [];
             for($j=0;$j<count($delivery_time);$j++ ){

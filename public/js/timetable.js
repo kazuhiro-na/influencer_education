@@ -140,6 +140,7 @@ function search(){
     }).done(function (res){
         $curriculums = res[0];
         $delivery_times = res[1];
+        console.log(res[1]);
 
         $('#curriculumBlock').empty();
         for(i=0; i<$curriculums.length;i++){
