@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\user\CurriculumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +29,19 @@ Route::post('/admin/login', [LoginController::class, 'login']);
 Route::post('admin/logout', [LoginController::class,'logout']);
 Route::view('/admin/register', 'admin/register');
 Route::post('/admin/register', [RegisterController::class, 'register']);
-Route::view('/admin/top', 'admin/top')->middleware('auth:admin');
-Route::view('/admin/banner', 'admin/banner')->name('admin.banner');
-
+Route::view('/admin/top', 'admin/top')->middleware('auth:admin')->name('admin.top');
+//Route::view('/admin/banner', '/admin/banner')->name('admin.banner');
+Route::get('/admin/banner', [BannerController::class, 'index'])->name('admin.banner');
+Route::post('/admin/store', [BannerController::class, 'store'])->name('banner.store');
+Route::post('/admin/banner/update', [BannerController::class, 'update'])->name('banner.update');
 //お知らせ一覧ページへ(仮)
 Route::view('/admin/article', 'admin/login')->name('admin.article');
 //授業一覧ページへ(仮)
 Route::view('/admin/curriculum', 'admin/login')->name('admin.curriculum');
+//時間割ページへ(仮)
+Route::get('/user/timetable', [CurriculumController::class, 'index'])->name('user.timetable');
+Route::post('/user/timetable/search', [CurriculumController::class, 'search']);
+Route::post('/user/timetable/classBtn', [CurriculumController::class, 'classBtn']);
+
+//ユーザートップページへ(ダミー)
+Route::view('/user/top', '/user/timetable')->middleware('auth:admin')->name('user.top');
