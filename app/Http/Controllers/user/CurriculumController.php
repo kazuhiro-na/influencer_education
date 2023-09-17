@@ -24,7 +24,6 @@ class CurriculumController extends Controller
     }
 
     public function search(Request $request){
-       // $date = $_POST['date'];
         $grade = $_POST['grade'];
         $date_from = $_POST['date_from'];
         $date_to = $_POST['date_to'];
@@ -35,7 +34,9 @@ class CurriculumController extends Controller
           $curriculumData = $curriculum->curriculum($grade,$date_from,$date_to);
           $timetable = $curriculum->timetable($curriculumData);
           $result = [$curriculumData,$timetable];
+        
           return $result;
+
         }catch(ValidationException $e){
           DB::rollback();
           return back();
@@ -43,7 +44,7 @@ class CurriculumController extends Controller
     }
   
     public function classBtn(Request $request){
-       $id = Auth::user()->id;
+      $id = Auth::user()->id;
       $curriculum = new Curriculum();
 
        DB::beginTransaction();

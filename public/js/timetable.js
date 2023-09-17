@@ -102,7 +102,7 @@ function classBtn(){
 $(document).on('click','.classLink',function(){
     $grade = $(this).text();
     $gradeNum = $(this).attr('id');
-    $('#grade').html('<h4 class="mx-4 px-3 py-1 border border-secondary bg-primary-subtle text-white rounded grade" id="'+$gradeNum+'">'+$grade+'</h4>');
+    $('#grade').html('<h4 class="mx-4 px-3 py-1 border border-secondary bg-primary text-white rounded grade" id="'+$gradeNum+'">'+$grade+'</h4>');
     search();
     return false;
 });
@@ -117,7 +117,7 @@ $(document).on('click','#curriculumField',function(){
 //検索機能
 function search(){
     $gradeNum = $('.grade').attr('id');
-    console.log($gradeNum);
+  //  console.log($gradeNum);
     $dateFrom = $year*10000000000+$month*100000000+31*1000000;
     $dateTo = $year*10000000000+$month*100000000+1*1000000;
     var data = {
@@ -140,17 +140,25 @@ function search(){
     }).done(function (res){
         $curriculums = res[0];
         $delivery_times = res[1];
+
         $('#curriculumBlock').empty();
         for(i=0; i<$curriculums.length;i++){
             $('#curriculumBlock').append(
                 "<div class='col' id='curriculumField' name='"+$curriculums[i].id+"'>"+
                 "<div class='card my-2 ms-2'>"+
                 "<img src='../storage/"+$curriculums[i].thumbnail+"' class='card-img-top p-2'>"+
-                "<div class='card-body'>"+
-                "<h5 class='card-title'>"+$curriculums[i].title+"</h5>"+
-                "<p class='card-text'>"+$delivery_times[i]+"</p>"+
+                "<div class='card-body"+i+" p-2'>"+
+                "<h5 class='card-title'>"+$curriculums[i].title+"</h5>"
+            )
+            for(j=0; j<res[1][i].length;j++){
+                $('.card-body'+[i]).append(
+                    "<span class='card-text'>"+$delivery_times[i][j]+"</span></br>"
+                )        
+            }
+            $('.card-body'+[i]).append(
                 "</div></div></div>"
             )
+
         }
        
         return false;

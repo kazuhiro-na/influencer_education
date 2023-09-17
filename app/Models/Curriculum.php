@@ -36,6 +36,7 @@ class Curriculum extends Model
         $id = $curriculumData;
         $timetable = [];
 
+        
         for($i=0;$i<count($id);$i++ ){
           $flag = $curriculumData[$i]->alway_delivery_flg;
   
@@ -45,15 +46,21 @@ class Curriculum extends Model
             $delivery_time = DB::table('delivery_times')
             ->where('curriculums_id','=',$curriculumData[$i]->id)
             ->get();
-            $from = date('n月d日 H:i',strtotime($delivery_time[0]->delivery_from));
-            $to = date('H:i',strtotime($delivery_time[0]->delivery_to));
-            $from_to = [$from.'～'.$to];
-            array_push($timetable,$from_to);
+            
+            //return 'チェック'.$delivery_time;
 
+            $fromArray = [];
+            for($j=0;$j<count($delivery_time);$j++ ){
+              $from = date('n月d日 H:i',strtotime($delivery_time[$j]->delivery_from));
+              $to = date('H:i',strtotime($delivery_time[$j]->delivery_to));
+              $from_to = [$from.'～'.$to];
+              
+              array_push($fromArray,$from_to);
+            }
+            array_push($timetable,$fromArray);
           }
         };
         return $timetable;
-
     }
 
     public function clearData($id){
