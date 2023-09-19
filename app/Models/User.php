@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Classroom::class, 'class_id');
     }
+
+    public function curriculums()
+    {
+        return $this->belongsToMany(Curriclulum::class, 'curriculum_progress', 'curriculums_id', 'users_id')->withPivot('clear_flag');
+    }
 }
