@@ -32,8 +32,8 @@ Route::post('/admin/register', [RegisterController::class, 'register']);
 Route::view('/admin/top', 'admin/top')->middleware('auth:admin')->name('admin.top');
 //Route::view('/admin/banner', '/admin/banner')->name('admin.banner');
 Route::get('/admin/banner', [BannerController::class, 'index'])->name('admin.banner');
-Route::post('/admin/store', [BannerController::class, 'store'])->name('banner.store');
 Route::post('/admin/banner/update', [BannerController::class, 'update'])->name('banner.update');
+Route::post('/admin/banner/delete', [BannerController::class, 'delete'])->name('banner.delete');
 //お知らせ一覧ページへ(仮)
 Route::view('/admin/article', 'admin/login')->name('admin.article');
 //授業一覧ページへ(仮)
