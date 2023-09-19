@@ -10,15 +10,6 @@ class Banner extends Model
 {
     use HasFactory;
 
-    public function bannerCreate($data){
-
-        DB::table('banners')->insert([
-            'image' => $data->file('image')->store('img','public'),                                                                   
-            'created_at' => now(),
-            'updated_at' => now()
-        ]); 
-    }
-
     public function imgUpdate($request,$loopNum){
         for($i=1;$i<=$loopNum;$i++){
             if($request->has('img'.$i)==1){

@@ -14,21 +14,6 @@ class BannerController extends Controller
         return view('admin.banner',compact('banners'));
     }
 
-    public function store(){
-        DB::beginTransaction();
-        try{
-            $banners = new Banner();
-            $banners->bannerCreate($request);
-            DB::commit();
-            
-        }catch(ValidationException $e){
-            DB::rollback();
-            return back();
-        }
-
-        return redirect()->route('admin.banner');
-    }
-
     public function update(Request $request){
         DB::beginTransaction();
         try{
