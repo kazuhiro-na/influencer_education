@@ -7,10 +7,20 @@
     <h2>各学年毎の授業タイトル</h2>
     <ul>
         @foreach ($classes as $classroom)
-            <li>{{ $classroom->name }}年生：
+            <li>{{ $classroom->name }}
                 <ul>
                     @foreach ($classroom->curriculums as $curriculum)
-                        <li>{{ $curriculum->title }}</li>
+                        @php
+                        $progress = App\Models\CurriculumProgress::where('users_id', $userId)
+                            ->where('curriculums_id', $curriculum->id)->first();
+                        @endphp
+                        <li>
+                            @if ($progress && $progress->clear_flag === 1)
+                                {{ $curriculum->title }}（受講済）
+                            @else
+                                {{ $curriculum->title }}
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
             </li>
