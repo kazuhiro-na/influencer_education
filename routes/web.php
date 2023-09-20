@@ -33,3 +33,7 @@ Route::view('/admin/password/reset/{token}', [App\Http\Controllers\admin\ResetPa
 Route::post('/admin/password/reset', [App\Http\Controllers\admin\ResetPasswordController::class, 'reset']);
 
 Route::get('/user/progress/{userId}', 'UserController@progress');
+Route::get('/user/articles/{articleId}', 'UserController@article');
+
+Route::get('/admin/articles/{article}/edit', 'ArticleController@edit');
+Route::put('/admin/articles/{article}', 'ArticleController@update')->name('admin.articles.update');
