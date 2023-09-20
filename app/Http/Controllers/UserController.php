@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Classroom;
 use App\Models\User;
+use App\Models\Article;
 
 class UserController extends Controller
 {
@@ -27,5 +28,16 @@ class UserController extends Controller
             
             return view('user.progress', compact('userName', 'classroomName', 'classes', 'userId', 'curriculum'));
         }
+    }
+
+    public function article($articleId)
+    {
+        $article = Article::find($articleId);
+
+        if (!$article) {
+            return redirect()->route('home')->with('error', 'お知らせが見つかりません。');
+        }
+
+        return view('user.articles', compact('article'));
     }
 }
