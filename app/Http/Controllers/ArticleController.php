@@ -28,4 +28,18 @@ class ArticleController extends Controller
 
         return redirect()->route('admin.articles.edit', $article)->with('success', 'お知らせが更新されました。');
     }
+
+    public function index()
+    {
+        $articles = Article::all();
+
+        return view('admin.articles.index', compact('articles'));
+    }
+
+    public function destroy(Article $article)
+    {
+        $article->delete();
+
+        return redirect()->route('admin.articles.index')->with('success', 'お知らせを削除しました。');
+    }
 }

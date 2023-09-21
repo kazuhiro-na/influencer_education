@@ -35,5 +35,7 @@ Route::post('/admin/password/reset', [App\Http\Controllers\admin\ResetPasswordCo
 Route::get('/user/progress/{userId}', 'UserController@progress');
 Route::get('/user/articles/{articleId}', 'UserController@article');
 
-Route::get('/admin/articles/{article}/edit', 'ArticleController@edit');
+Route::get('/admin/articles/{article}/edit', 'ArticleController@edit')->name('admin.articles.edit');
 Route::put('/admin/articles/{article}', 'ArticleController@update')->name('admin.articles.update');
+Route::get('/admin/articles', 'ArticleController@index')->name('admin.articles.index');
+Route::delete('/admin/articles/{article}', 'ArticleController@destroy')->name('admin.articles.destroy');
