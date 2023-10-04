@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'name_kana',
         'email',
         'password',
+        'class_id',
     ];
 
     /**
@@ -41,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class, 'class_id');
+    }
+
+    public function curriculums()
+    {
+        return $this->belongsToMany(Curriclulum::class, 'curriculum_progress', 'curriculums_id', 'users_id')->withPivot('clear_flag');
+    }
 }
