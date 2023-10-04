@@ -26,7 +26,7 @@ class UserController extends Controller
             $userId = $user->id;
             $curriculum = $user->classroom->curriculums;
             
-            return view('user.progress', compact('userName', 'classroomName', 'classes', 'userId', 'curriculum'));
+            return view('user.progress', compact('userName', 'classroomName', 'classes', 'userId', 'curriculum', 'user'));
         }
     }
 

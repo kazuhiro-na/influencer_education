@@ -1,6 +1,14 @@
 @extends('layouts.user')
 
 @section('content')
+    <a href="/">戻る</a>
+    
+    @if ($user->profile_image)
+        <img src="{{ asset('storage/profiles' . $user->profile_image) }}" alt="プロフィール画像">
+    @else
+        <img src="{{ asset('storage/images/no_image.png') }}" alt="ノーイメージ">
+    @endif
+
     <h1>{{ $userName }}の授業進捗</h1>
     <p>現在の学年：{{ $classroomName }}</p>
 
