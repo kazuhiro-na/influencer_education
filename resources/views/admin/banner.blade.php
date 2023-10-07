@@ -23,9 +23,6 @@
                 </div>
                 <div class="m-3 text-center ">
                     <button class="btn btn-secondary px-5 py-0 fs-4" type="button" name="send" id='bannerEdit'>登録</button>
-                    <!--
-                    <button class="btn btn-secondary px-5 py-0 fs-4" type="submit" name="send" id='bannerEdit'>登録</button>
-                    -->
                 </div>
             </form>         
         </div>

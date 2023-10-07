@@ -77,32 +77,23 @@ $(document).on('click','#bannerCreate',function(){
     console.log(loop);
     
     $('#bannerBlock').append(
-        "<div class='d-flex align-items-center ms-lg-5 ps-5 my-2'>"+
+        "<div class='d-flex align-items-center ms-lg-5 ps-5 my-2' id='image"+loop+"'>"+
             "<div class='w-25 me-5'>"+
                 "<img class='w-100 mx-4' src='../storage/img/none.jpg'>"+
             "</div>"+
             "<input class='bannerFile' type='file' name='image"+loop+"'>"+
             "<input class='d-none' type='text' name='"+loop+"' value='"+$test+"'>"+
-            "<button class='btn fw-bold fs-3 mx-4 bg-danger text-white rounded-circle  border border-white bannerDelete' type='button' name='"+loop+"' id='"+$test+"'>ー</button>"+
+            "<button class='btn fw-bold fs-3 mx-4 bg-danger text-white rounded-circle  border border-white Delete' type='button' name='"+loop+"' id='"+$test+"'>ー</button>"+
         "</div>"
     )
 });
 
 //登録ボタンの押下
 $(document).on('click','#bannerEdit',function(){
-    console.log('登録');
   $('#bannerForm').submit()
-   // $.when(
-       // console.log('登録')
-        
-   // ).done(function(){
-      //  $('#bannerBlock').empty();
-      //  bannerList();
- //   }); 
-    
 });
 
-//削除
+//バナーデータ削除
 $(document).on('click','.bannerDelete',function(){
     $loopNum = $(this).attr('name');
     $delNum = $(this).attr('id');
@@ -146,5 +137,13 @@ $(document).on('click','.bannerDelete',function(){
 
         });
     }
+});
+
+//入力欄削除
+$(document).on('click','.Delete',function(){
+    $loopNum = $(this).attr('name');
+    $('#image'+$loopNum).empty();
+    console.log($loopNum);
+
 });
 
