@@ -58,7 +58,6 @@ function classBtn(){
         datatype: 'json',
 
     }).done(function (res){
-    //    console.log(res[0][0]);
         $classKey = Object.keys(res[0]);
         $clearflg = res[0];
         $gradeCount = 0;
@@ -69,7 +68,6 @@ function classBtn(){
                 
             }    
         };
-       // console.log($gradeCount);
         for(i=0;i<=$gradeCount;i++){
             $('#classesBlock').append(
                 "<h6 class='btn m-auto mb-3 px-auto py-1 border border-secondary bg-primary text-white rounded classLink' id='"+res[2][i].id+"'>"+res[2][i].name+"</h6>"
@@ -82,7 +80,6 @@ function classBtn(){
         };
         $grade = res[2][$gradeCount].name;
         $gradeNum = res[2][$gradeCount].id;
-       // $('.grade').text($grade);
         $('#grade').html('<h4 class="mx-4 px-3 py-1 border border-secondary bg-primary text-white rounded grade" id="'+$gradeNum+'">'+$grade+'</h4>');
         $('#date').html('<h3>'+$year+'年'+$month+'月スケジュール</h3>');
 
@@ -117,7 +114,6 @@ $(document).on('click','#curriculumField',function(){
 //検索機能
 function search(){
     $gradeNum = $('.grade').attr('id');
-  //  console.log($gradeNum);
     $dateFrom = $year*10000000000+$month*100000000+31*1000000;
     $dateTo = $year*10000000000+$month*100000000+1*1000000;
     var data = {

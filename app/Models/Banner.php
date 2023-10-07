@@ -14,7 +14,7 @@ class Banner extends Model
         for($i=1;$i<=$loopNum;$i++){
             if($request->has('img'.$i)==1){
                 $imgId = $request->input($i);
-                $imgName = 'test'.$imgId.'.jpg';
+                $imgName = 'img'.$imgId.'.jpg';
                 $imgPath = '/img/'.$imgName;
                 
                 $del = \Storage::disk('public')->delete($imgPath);
@@ -36,7 +36,7 @@ class Banner extends Model
         for($i=$CreateNum;$i<=$Createdd;$i++){
             if($request->has('image'.$i)==1){
                 $nextId = DB::table('banners')->max('id') + 1;
-                $imgName = 'test'.$nextId.'.jpg';
+                $imgName = 'img'.$nextId.'.jpg';
                 $imgPath = '/img/'.$imgName;
                 
                 $update = DB::table('banners')->insert([

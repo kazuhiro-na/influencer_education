@@ -14,11 +14,17 @@ class BannerController extends Controller
         return view('admin.banner',compact('banners'));
     }
 
+    public function list(){
+        $banners = Banner::all();
+        return $banners;
+    }
+
     public function update(Request $request){
+        
         DB::beginTransaction();
         try{
             $banner = new Banner();  
-            $loopNum = $request->input('loop'); 
+            $loopNum = $request->input('loop');
             $imgUpdate = $banner->imgUpdate($request,$loopNum);
             $imgCreate = $banner->imgCreate($request,$loopNum);
             

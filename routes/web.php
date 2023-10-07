@@ -30,8 +30,9 @@ Route::post('admin/logout', [LoginController::class,'logout']);
 Route::view('/admin/register', 'admin/register');
 Route::post('/admin/register', [RegisterController::class, 'register']);
 Route::view('/admin/top', 'admin/top')->middleware('auth:admin')->name('admin.top');
-//Route::view('/admin/banner', '/admin/banner')->name('admin.banner');
+//Route::view('/admin/banner', '/admin/banner');
 Route::get('/admin/banner', [BannerController::class, 'index'])->name('admin.banner');
+Route::post('/admin/banner/list', [BannerController::class, 'list'])->name('banner.list');
 Route::post('/admin/banner/update', [BannerController::class, 'update'])->name('banner.update');
 Route::post('/admin/banner/delete', [BannerController::class, 'delete'])->name('banner.delete');
 //お知らせ一覧ページへ(仮)
